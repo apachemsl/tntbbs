@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.bbs.entity">
+ <class name="BbsLimit" table="bbs_limit">
+  <meta attribute="sync-DAO">false</meta>
+  <cache include="all" usage="read-write"/>
+  <id column="limit_id" name="id" type="integer">
+   <generator class="identity"/>
+  </id>
+  <property column="ip" generated="never" lazy="false" length="50"
+   name="ip" type="string"/>
+  <property column="user_id" generated="never" lazy="false" length="10"
+   name="userId" type="integer"/>
+ </class>
+</hibernate-mapping>

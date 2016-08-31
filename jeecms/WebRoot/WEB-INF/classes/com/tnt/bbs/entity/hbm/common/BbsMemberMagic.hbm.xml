@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.bbs.entity">
+ <class name="BbsMemberMagic" table="bbs_member_magic">
+  <meta attribute="sync-DAO">false</meta>
+  <id column="id" name="id" type="integer">
+   <generator class="native"/>
+  </id>
+  <property column="num" generated="never" lazy="false" length="10"
+   name="num" type="integer"/>
+  <many-to-one class="BbsUser" column="uid" name="user" not-null="true"/>
+  <many-to-one class="BbsCommonMagic" column="magicid" name="magic" not-null="true"/>
+ </class>
+</hibernate-mapping>

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.bbs.entity">
+ <class name="BbsCommonMagic" table="bbs_common_magic">
+  <meta attribute="sync-DAO">false</meta>
+  <id column="magicid" name="id" type="java.lang.Integer">
+   <generator class="native"/>
+  </id>
+  <property column="available" generated="never" lazy="false"
+   name="available" not-null="true" type="java.lang.Boolean"/>
+  <property column="name" generated="never" lazy="false" length="50"
+   name="name" not-null="true" type="string"/>
+  <property column="identifier" generated="never" lazy="false"
+   length="40" name="identifier" not-null="true" type="string"/>
+  <property column="description" generated="never" lazy="false"
+   length="255" name="description" not-null="true" type="string"/>
+  <property column="displayorder" generated="never" lazy="false"
+   length="3" name="displayorder" not-null="true" type="java.lang.Byte"/>
+  <property column="credit" generated="never" lazy="false" name="credit"
+   not-null="true" type="java.lang.Byte"/>
+  <property column="price" generated="never" lazy="false" length="8"
+   name="price" not-null="true" type="java.lang.Integer"/>
+  <property column="num" generated="never" lazy="false" length="5"
+   name="num" not-null="true" type="java.lang.Integer"/>
+  <property column="salevolume" generated="never" lazy="false"
+   length="5" name="salevolume" not-null="true" type="java.lang.Integer"/>
+  <property column="supplytype" generated="never" lazy="false"
+   name="supplytype" not-null="true" type="java.lang.Integer"/>
+  <property column="supplynum" generated="never" lazy="false" length="5"
+   name="supplynum" not-null="true" type="java.lang.Integer"/>
+  <property column="useperoid" generated="never" lazy="false"
+   name="useperoid" not-null="true" type="java.lang.Integer"/>
+  <property column="usenum" generated="never" lazy="false" length="5"
+   name="usenum" not-null="true" type="java.lang.Integer"/>
+  <property column="weight" generated="never" lazy="false" length="3"
+   name="weight" not-null="true" type="java.lang.Integer"/>
+  <property column="useevent" generated="never" lazy="false"
+   name="useevent" not-null="true" type="java.lang.Boolean"/>
+  <set cascade="all" lazy="true" name="users" sort="unsorted" table="bbs_member_magic">
+   <key column="magicid"/>
+   <many-to-many class="BbsUser" column="uid" unique="false"/>
+  </set>
+  <set cascade="all" lazy="true" name="useGroups" sort="unsorted" table="bbs_magic_usergroup">
+   <key column="magicid"/>
+   <many-to-many class="BbsUserGroup" column="groupid" unique="false"/>
+  </set>
+  <set cascade="all" lazy="true" name="toUseGroups" sort="unsorted" table="bbs_magic_usergroup_to">
+   <key column="magicid"/>
+   <many-to-many class="BbsUserGroup" column="groupid" unique="false"/>
+  </set>
+ </class>
+</hibernate-mapping>

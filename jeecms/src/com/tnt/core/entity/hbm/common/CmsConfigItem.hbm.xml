@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.core.entity">
+ <class name="CmsConfigItem" table="jc_config_item">
+  <meta attribute="sync-DAO">false</meta>
+  <id column="modelitem_id" name="id" type="integer">
+   <generator class="identity"/>
+  </id>
+  <property column="field" generated="never" lazy="false" length="50"
+   name="field" not-null="true" type="string"/>
+  <property column="item_label" generated="never" lazy="false"
+   length="100" name="label" not-null="true" type="string"/>
+  <property column="priority" generated="never" lazy="false" length="10"
+   name="priority" not-null="true" type="integer"/>
+  <property column="def_value" generated="never" lazy="false"
+   length="255" name="defValue" type="string"/>
+  <property column="opt_value" generated="never" lazy="false"
+   length="255" name="optValue" type="string"/>
+  <property column="text_size" generated="never" lazy="false"
+   length="20" name="size" type="string"/>
+  <property column="area_rows" generated="never" lazy="false" length="3"
+   name="rows" type="string"/>
+  <property column="area_cols" generated="never" lazy="false" length="3"
+   name="cols" type="string"/>
+  <property column="help" generated="never" lazy="false" length="255"
+   name="help" type="string"/>
+  <property column="help_position" generated="never" lazy="false"
+   length="1" name="helpPosition" type="string"/>
+  <property column="data_type" generated="never" lazy="false"
+   length="10" name="dataType" not-null="true" type="integer"/>
+  <property column="is_required" generated="never" lazy="false"
+   length="10" name="required" not-null="true" type="boolean"/>
+  <property column="category" generated="never" lazy="false" length="10"
+   name="category" not-null="true" type="integer"/>
+  <many-to-one class="CmsConfig" column="config_id" name="config" not-null="true"/>
+ </class>
+</hibernate-mapping>

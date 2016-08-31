@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.bbs.entity">
+ <class name="BbsUserActiveLevel" table="bbs_user_active_level">
+  <meta attribute="sync-DAO">false</meta>
+  <id column="level_id" name="id" type="integer">
+   <generator class="identity"/>
+  </id>
+  <property column="level_name" generated="never" lazy="false"
+   length="255" name="levelName" not-null="true" type="string"/>
+  <property column="required_hour" generated="never" lazy="false"
+   length="19" name="requiredHour" not-null="true" type="java.lang.Long"/>
+  <property column="level_img" generated="never" lazy="false"
+   length="255" name="levelImg" type="string"/>
+ </class>
+</hibernate-mapping>

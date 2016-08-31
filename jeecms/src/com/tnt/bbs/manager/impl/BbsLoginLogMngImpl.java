@@ -1,0 +1,72 @@
+package com.tnt.bbs.manager.impl;
+
+import java.util.Calendar;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.tnt.bbs.dao.BbsLoginLogDao;
+import com.tnt.bbs.entity.BbsLoginLog;
+import com.tnt.bbs.entity.BbsUser;
+import com.tnt.bbs.manager.BbsLoginLogMng;
+import com.tnt.common.hibernate3.Updater;
+import com.tnt.common.page.Pagination;
+
+@Service
+@Transactional
+public class BbsLoginLogMngImpl implements BbsLoginLogMng {
+
+	@Transactional(readOnly = true)
+	public Pagination getPage(int pageNo, int pageSize) {
+		Pagination page = dao.getPage(pageNo, pageSize);
+		return page;
+	}
+
+	@Transactional(readOnly = true)
+	public BbsLoginLog findById(Integer id) {
+		BbsLoginLog entity = dao.findById(id);
+		return entity;
+	}
+
+	public BbsLoginLog save(BbsLoginLog bean) {
+		dao.save(bean);
+		return bean;
+	}
+	public BbsLoginLog loginLog(BbsUser user ,String ip){
+		BbsLoginLog loginLog = new BbsLoginLog();
+		loginLog.setIp(ip);
+		Calendar calendar = Calendar.getInstance();
+		loginLog.setLoginTime(calendar.getTime());
+		loginLog.setUser(user);
+		loginLog=save(loginLog);
+		return loginLog;
+	}
+
+	public BbsLoginLog update(BbsLoginLog bean) {
+		Updater<BbsLoginLog> updater = new Updater<BbsLoginLog>(bean);
+		bean = dao.updateByUpdater(updater);
+		return bean;
+	}
+
+	public BbsLoginLog deleteById(Integer id) {
+		BbsLoginLog bean = dao.deleteById(id);
+		return bean;
+	}
+
+	public BbsLoginLog[] deleteByIds(Integer[] ids) {
+		BbsLoginLog[] beans = new BbsLoginLog[ids.length];
+		for (int i = 0, len = ids.length; i < len; i++) {
+			beans[i] = deleteById(ids[i]);
+		}
+		return beans;
+	}
+
+	private BbsLoginLogDao dao;
+
+	@Autowired
+	public void setDao(BbsLoginLogDao dao) {
+		this.dao = dao;
+	}
+
+}

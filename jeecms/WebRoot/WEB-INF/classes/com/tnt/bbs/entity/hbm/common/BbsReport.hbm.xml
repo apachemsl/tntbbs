@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.bbs.entity">
+ <class name="BbsReport" table="bbs_report">
+  <meta attribute="sync-DAO">false</meta>
+  <cache include="all" usage="read-write"/>
+  <id column="id" name="id" type="integer">
+   <generator class="identity"/>
+  </id>
+  <property column="report_url" generated="never" lazy="false"
+   length="255" name="reportUrl" not-null="true" type="string"/>
+  <property column="process_time" generated="never" lazy="false"
+   length="19" name="processTime" type="timestamp"/>
+  <property column="process_result" generated="never" lazy="false"
+   length="255" name="processResult" type="string"/>
+  <property column="status" generated="never" lazy="false" name="status" type="boolean"/>
+  <property column="report_time" generated="never" lazy="false"
+   length="19" name="reportTime" not-null="true" type="timestamp"/>
+  <many-to-one class="BbsUser" column="process_user" name="processUser" not-null="false"/>
+  <set cascade="delete-orphan" inverse="true" name="bbsReportExtSet" sort="unsorted">
+   <cache include="all" usage="read-write"/>
+   <key column="report_id"/>
+   <one-to-many class="BbsReportExt"/>
+  </set>
+ </class>
+</hibernate-mapping>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.core.entity">
+ <class name="Config" table="jo_config">
+  <meta attribute="sync-DAO">false</meta>
+  <id column="cfg_key" name="id" type="string">
+   <generator class="assigned"/>
+  </id>
+  <property column="cfg_value" generated="never" lazy="false"
+   length="255" name="value" type="string"/>
+ </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.bbs.entity">
+ <class name="Attachment" table="attachment">
+  <meta attribute="sync-DAO">false</meta>
+  <cache include="all" usage="read-write"/>
+  <id column="attachment_id" name="id" type="java.lang.Integer">
+   <generator class="native"/>
+  </id>
+  <property column="name" generated="never" lazy="false" length="100"
+   name="name" type="string"/>
+  <property column="description" generated="never" lazy="false"
+   length="255" name="description" type="string"/>
+  <property column="file_path" generated="never" lazy="false"
+   length="100" name="filePath" type="string"/>
+  <property column="file_name" generated="never" lazy="false"
+   length="100" name="fileName" type="string"/>
+  <property column="file_size" generated="never" lazy="false"
+   length="10" name="fileSize" type="integer"/>
+  <property column="create_time" generated="never" lazy="false"
+   name="createTime" type="timestamp"/>
+  <property column="is_pictrue" generated="never" lazy="false"
+   name="picture" not-null="true" type="java.lang.Boolean"/>
+  <many-to-one class="BbsPost" column="post_id" name="post" not-null="true"/>
+ </class>
+</hibernate-mapping>

@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.bbs.entity">
+ <class name="BbsUser" table="jb_user">
+  <meta attribute="sync-DAO">false</meta>
+  <cache include="all" usage="read-write"/>
+  <id column="user_id" name="id" type="java.lang.Integer">
+   <generator class="assigned"/>
+  </id>
+  <property column="username" generated="never" lazy="false"
+   length="100" name="username" not-null="true" type="string"/>
+  <property column="email" generated="never" lazy="false" length="100"
+   name="email" type="string"/>
+  <property column="register_time" generated="never" lazy="false"
+   length="19" name="registerTime" not-null="true" type="timestamp"/>
+  <property column="register_ip" generated="never" lazy="false"
+   length="50" name="registerIp" not-null="true" type="string"/>
+  <property column="last_login_time" generated="never" lazy="false"
+   length="19" name="lastLoginTime" type="timestamp"/>
+  <property column="last_login_ip" generated="never" lazy="false"
+   length="50" name="lastLoginIp" type="string"/>
+  <property column="login_count" generated="never" lazy="false"
+   length="10" name="loginCount" not-null="true" type="integer"/>
+  <property column="upload_total" generated="never" lazy="false"
+   length="19" name="uploadTotal" not-null="true" type="java.lang.Long"/>
+  <property column="UPLOAD_TODAY" generated="never" lazy="false"
+   length="19" name="uploadToday" not-null="true" type="integer"/>
+  <property column="upload_size" generated="never" lazy="false"
+   length="10" name="uploadSize" not-null="true" type="integer"/>
+  <property column="upload_date" generated="never" lazy="false"
+   length="19" name="uploadDate" type="java.sql.Date"/>
+  <property column="is_admin" generated="never" lazy="false"
+   name="admin" not-null="true" type="java.lang.Boolean"/>
+  <property column="is_disabled" generated="never" lazy="false"
+   name="disabled" not-null="true" type="java.lang.Boolean"/>
+  <property column="POINT" generated="never" lazy="false" length="19"
+   name="point" not-null="true" type="java.lang.Long"/>
+  <property column="PRESTIGE" generated="never" lazy="false" length="19"
+   name="prestige" not-null="true" type="java.lang.Long"/>
+  <property column="INTRODUCTION" generated="never" lazy="false"
+   length="255" name="introduction" type="string"/>
+  <property column="SIGNED" generated="never" lazy="false" length="255"
+   name="signed" type="string"/>
+  <property column="AVATAR" generated="never" lazy="false" length="100"
+   name="avatar" type="string"/>
+  <property column="AVATAR_TYPE" generated="never" lazy="false"
+   length="5" name="avatarType" not-null="true" type="java.lang.Short"/>
+  <property column="TOPIC_COUNT" generated="never" lazy="false"
+   length="10" name="topicCount" not-null="true" type="integer"/>
+  <property column="REPLY_COUNT" generated="never" lazy="false"
+   length="10" name="replyCount" not-null="true" type="integer"/>
+  <property column="PRIME_COUNT" generated="never" lazy="false"
+   length="10" name="primeCount" not-null="true" type="integer"/>
+  <property column="POST_TODAY" generated="never" lazy="false"
+   length="10" name="postToday" not-null="true" type="integer"/>
+  <property column="LAST_POST_TIME" generated="never" lazy="false"
+   name="lastPostTime" type="timestamp"/>
+  <property column="PROHIBIT_POST" generated="never" lazy="false"
+   length="5" name="prohibitPost" not-null="true" type="java.lang.Short"/>
+  <property column="PROHIBIT_TIME" generated="never" lazy="false"
+   name="prohibitTime" type="timestamp"/>
+  <property column="GRADE_TODAY" generated="never" lazy="false"
+   name="gradeToday" type="java.lang.Integer"/>
+  <property column="magic_packet_size" generated="never" lazy="false"
+   length="10" name="magicPacketSize" not-null="true" type="integer"/>
+  <property column="session_id" generated="never" lazy="false"
+   length="100" name="sessionId" type="string"/>
+  <property column="is_official" generated="never" lazy="false"
+   name="official" not-null="true" type="java.lang.Boolean"/>
+  <one-to-one cascade="delete" class="BbsUserOnline" name="userOnline"/>
+  <many-to-one class="BbsUserGroup" column="group_id" name="group" not-null="true"/>
+  <many-to-one class="BbsUserActiveLevel" column="active_level_id"
+   name="activeLevel" not-null="false"/>
+  <map cascade="all-delete-orphan" name="attr" sort="unsorted" table="jb_user_attr">
+   <cache include="all" usage="read-write"/>
+   <key column="user_id" not-null="true"/>
+   <map-key column="attr_name" length="30" type="string"/>
+   <element column="attr_value" length="255" type="string"/>
+  </map>
+  <set cascade="delete-orphan" inverse="true" name="userExtSet" sort="unsorted">
+   <cache include="all" usage="read-write"/>
+   <key column="user_id"/>
+   <one-to-many class="BbsUserExt"/>
+  </set>
+  <set cascade="delete-orphan" inverse="true" name="loginLogs"
+   order-by="id desc" sort="unsorted">
+   <key column="user_id"/>
+   <one-to-many class="BbsLoginLog"/>
+  </set>
+  <set cascade="delete-orphan" lazy="true" name="memberMagics"
+   sort="unsorted" table="bbs_member_magic">
+   <key column="uid"/>
+   <one-to-many class="BbsMemberMagic"/>
+  </set>
+  <set cascade="delete-orphan" inverse="true" name="operations" sort="unsorted">
+   <key column="operater_id"/>
+   <one-to-many class="BbsOperation"/>
+  </set>
+  <set cascade="delete-orphan" inverse="true" name="sessions" sort="unsorted">
+   <key column="user_id"/>
+   <one-to-many class="BbsSession"/>
+  </set>
+  <set cascade="delete-orphan" inverse="true" name="myFriends" sort="unsorted">
+   <cache include="all" usage="read-write"/>
+   <key column="user_id"/>
+   <one-to-many class="BbsFriendShip"/>
+  </set>
+  <set cascade="delete-orphan" inverse="true" name="toFriends" sort="unsorted">
+   <cache include="all" usage="read-write"/>
+   <key column="friend_id"/>
+   <one-to-many class="BbsFriendShip"/>
+  </set>
+ </class>
+</hibernate-mapping>

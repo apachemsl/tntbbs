@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.bbs.entity">
+ <class name="BbsGrade" table="bbs_grade">
+  <meta attribute="sync-DAO">false</meta>
+  <id column="GRADE_ID" name="id" type="java.lang.Integer">
+   <generator class="native"/>
+  </id>
+  <property column="SCORE" generated="never" lazy="false" length="10"
+   name="score" type="integer"/>
+  <property column="REASON" generated="never" lazy="false" length="100"
+   name="reason" type="string"/>
+  <property column="GRADE_TIME" generated="never" lazy="false"
+   name="gradeTime" type="timestamp"/>
+  <many-to-one class="BbsPost" column="POST_ID" name="post" not-null="true"/>
+  <many-to-one class="BbsUser" column="user_id" name="grader" not-null="true"/>
+ </class>
+</hibernate-mapping>

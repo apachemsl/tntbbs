@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd"
+	default-lazy-init="true">
+	
+	<bean id="imageUploadAct" class="com.tnt.bbs.action.ImageUploadAct"/>
+	<bean id="welcomeAct" class="com.tnt.bbs.action.WelcomeAct"/>
+	<bean id="bbsCategoryAct" class="com.tnt.bbs.action.BbsCategoryAct"/>
+	<bean id="bbsForumAct" class="com.tnt.bbs.action.BbsForumAct"/>
+	<bean id="bbsUserGroupAct" class="com.tnt.bbs.action.BbsUserGroupAct"/>
+	<bean id="resourceAct" class="com.tnt.bbs.action.template.ResourceAct"/>
+	<bean id="frameAct" class="com.tnt.bbs.action.FrameAct"/>
+	<bean id="bbsUserAct" class="com.tnt.bbs.action.BbsUserAct"/>
+	<bean id="cmsSiteConfigAct" class="com.tnt.bbs.action.CmsSiteConfigAct"/>
+	<bean id="cmsLoginAct" class="com.tnt.bbs.action.login.CmsLoginAct"/>
+	<bean id="personalAct" class="com.tnt.bbs.action.PersonalAct"/>
+	<bean id="cmsSensitivtyAct" class="com.tnt.bbs.action.CmsSensitivityAct"/>
+	<bean id="cmsFriendlinkCtgAct" class="com.tnt.bbs.action.CmsFriendlinkCtgAct"/>
+	<bean id="cmsFriendlinkAct" class="com.tnt.bbs.action.CmsFriendlinkAct"/>
+	<bean id="bbsPostTypeAct" class="com.tnt.bbs.action.BbsPostTypeAct"/>
+	<bean id="bbsCommonMagicAct" class="com.tnt.bbs.action.BbsCommonMagicAct"/>
+	<bean id="templateAct" class="com.tnt.bbs.action.template.TemplateAct">
+		<property name="tplManager" ref="tplManager"/>
+	</bean>
+	<bean id="bbsReportAct" class="com.tnt.bbs.action.BbsReportAct"/>
+	<bean id="bbsLimitAct" class="com.tnt.bbs.action.BbsLimitAct"/>
+	<bean id="bbsThirdAccountAct" class="com.tnt.bbs.action.BbsThirdAccountAct"/>
+	<bean id="bbsMessageAct" class="com.tnt.bbs.action.BbsMessageAct"/>
+	<bean id="bbsUserActiveLevelAct" class="com.tnt.bbs.action.BbsUserActiveLevelAct"/>
+</beans>

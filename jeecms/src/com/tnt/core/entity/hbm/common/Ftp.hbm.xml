@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.core.entity">
+ <class name="Ftp" table="jo_ftp">
+  <meta attribute="sync-DAO">false</meta>
+  <cache include="all" usage="read-write"/>
+  <id column="ftp_id" name="id" type="java.lang.Integer">
+   <generator class="identity"/>
+  </id>
+  <property column="ftp_name" generated="never" lazy="false"
+   length="100" name="name" not-null="true" type="string"/>
+  <property column="ip" generated="never" lazy="false" length="50"
+   name="ip" not-null="true" type="string"/>
+  <property column="port" generated="never" lazy="false" length="10"
+   name="port" not-null="true" type="integer"/>
+  <property column="username" generated="never" lazy="false"
+   length="100" name="username" type="string"/>
+  <property column="password" generated="never" lazy="false"
+   length="100" name="password" type="string"/>
+  <property column="encoding" generated="never" lazy="false" length="20"
+   name="encoding" not-null="true" type="string"/>
+  <property column="timeout" generated="never" lazy="false" length="10"
+   name="timeout" type="integer"/>
+  <property column="ftp_path" generated="never" lazy="false"
+   length="255" name="path" type="string"/>
+  <property column="url" generated="never" lazy="false" length="255"
+   name="url" not-null="true" type="string"/>
+ </class>
+</hibernate-mapping>

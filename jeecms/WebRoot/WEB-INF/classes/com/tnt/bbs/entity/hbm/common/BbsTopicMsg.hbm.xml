@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.bbs.entity">
+ <class name="BbsTopicMsg" table="bbs_topic_msg">
+  <meta attribute="sync-DAO">false</meta>
+  <cache include="all" usage="read-write"/>
+  <id column="msg_id" name="id" type="integer">
+   <generator class="identity"/>
+  </id>
+  <property column="is_read" generated="never" lazy="false"
+   name="status" not-null="true" type="java.lang.Boolean"/>
+  <many-to-one class="BbsUser" column="user_id" name="user" not-null="false"/>
+  <many-to-one class="BbsTopic" column="topic_id" name="topic" not-null="true"/>
+  <many-to-one class="BbsPost" column="post_id" name="post" not-null="false"/>
+ </class>
+</hibernate-mapping>

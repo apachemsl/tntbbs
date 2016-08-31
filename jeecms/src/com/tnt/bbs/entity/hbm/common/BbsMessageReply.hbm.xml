@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.bbs.entity">
+ <class name="BbsMessageReply" table="jb_message_reply">
+  <meta attribute="sync-DAO">false</meta>
+  <cache include="all" usage="read-write"/>
+  <id column="reply_id" name="id" type="integer">
+   <generator class="identity"/>
+  </id>
+  <property generated="never" lazy="false" name="content" type="string"/>
+  <property column="is_read" generated="never" lazy="false"
+   name="status" not-null="true" type="java.lang.Boolean"/>
+  <property column="is_notification" generated="never" lazy="false"
+   name="isnotification" not-null="true" type="java.lang.Boolean"/>
+  <property column="create_time" generated="never" lazy="false"
+   name="createTime" not-null="true" type="timestamp"/>
+  <many-to-one class="BbsMessage" column="msg_id" lazy="false"
+   name="message" not-null="true"/>
+  <many-to-one class="BbsUser" lazy="false" name="sender"/>
+  <many-to-one class="BbsUser" lazy="false" name="receiver" not-null="true"/>
+ </class>
+</hibernate-mapping>

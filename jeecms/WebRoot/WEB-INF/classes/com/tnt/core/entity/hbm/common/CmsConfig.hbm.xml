@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.core.entity">
+ <class name="CmsConfig" table="jc_config">
+  <meta attribute="sync-DAO">false</meta>
+  <cache include="all" usage="read-write"/>
+  <id column="config_id" name="id" type="java.lang.Integer">
+   <generator class="assigned"/>
+  </id>
+  <property column="context_path" generated="never" lazy="false"
+   length="20" name="contextPath" type="string"/>
+  <property column="servlet_point" generated="never" lazy="false"
+   length="20" name="servletPoint" type="string"/>
+  <property column="port" generated="never" lazy="false" length="10"
+   name="port" type="integer"/>
+  <property column="db_file_uri" generated="never" lazy="false"
+   length="50" name="dbFileUri" not-null="true" type="string"/>
+  <property column="is_upload_to_db" generated="never" lazy="false"
+   name="uploadToDb" not-null="true" type="java.lang.Boolean"/>
+  <property column="def_img" generated="never" lazy="false" length="255"
+   name="defImg" not-null="true" type="string"/>
+  <property column="login_url" generated="never" lazy="false"
+   length="255" name="loginUrl" not-null="true" type="string"/>
+  <property column="process_url" generated="never" lazy="false"
+   length="255" name="processUrl" type="string"/>
+  <property column="count_clear_time" generated="never" lazy="false"
+   length="19" name="countClearTime" not-null="true" type="date"/>
+  <property column="count_copy_time" generated="never" lazy="false"
+   length="19" name="countCopyTime" not-null="true" type="timestamp"/>
+  <property column="download_code" generated="never" lazy="false"
+   length="32" name="downloadCode" not-null="true" type="string"/>
+  <property column="download_time" generated="never" lazy="false"
+   length="10" name="downloadTime" not-null="true" type="integer"/>
+  <property column="allow_suffix" generated="never" lazy="false"
+   length="255" name="allowSuffix" not-null="true" type="string"/>
+  <component class="MarkConfig" name="markConfig">
+   <property column="mark_on" generated="never" lazy="false" name="on"
+    not-null="true" type="java.lang.Boolean"/>
+   <property column="mark_width" generated="never" lazy="false"
+    length="10" name="minWidth" not-null="true" type="integer"/>
+   <property column="mark_height" generated="never" lazy="false"
+    length="10" name="minHeight" not-null="true" type="integer"/>
+   <property column="mark_image" generated="never" lazy="false"
+    length="100" name="imagePath" type="string"/>
+   <property column="mark_content" generated="never" lazy="false"
+    length="100" name="content" not-null="true" type="string"/>
+   <property column="mark_size" generated="never" lazy="false"
+    length="10" name="size" not-null="true" type="integer"/>
+   <property column="mark_color" generated="never" lazy="false"
+    length="10" name="color" not-null="true" type="string"/>
+   <property column="mark_alpha" generated="never" lazy="false"
+    length="10" name="alpha" not-null="true" type="integer"/>
+   <property column="mark_position" generated="never" lazy="false"
+    length="10" name="pos" not-null="true" type="integer"/>
+   <property column="mark_offset_x" generated="never" lazy="false"
+    length="10" name="offsetX" not-null="true" type="integer"/>
+   <property column="mark_offset_y" generated="never" lazy="false"
+    length="10" name="offsetY" not-null="true" type="integer"/>
+  </component>
+  <map cascade="all-delete-orphan" name="attr" sort="unsorted" table="jc_config_attr">
+   <cache include="all" usage="read-write"/>
+   <key column="config_id" not-null="true"/>
+   <map-key column="attr_name" length="30" type="string"/>
+   <element column="attr_value" length="255" type="string"/>
+  </map>
+ </class>
+</hibernate-mapping>

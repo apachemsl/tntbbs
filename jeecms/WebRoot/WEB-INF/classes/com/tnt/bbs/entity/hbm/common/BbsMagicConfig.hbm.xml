@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.bbs.entity">
+ <class name="BbsMagicConfig" table="bbs_magic_config">
+  <meta attribute="sync-DAO">false</meta>
+  <cache include="all" usage="read-write"/>
+  <id column="id" name="Id" type="integer">
+   <generator class="assigned"/>
+  </id>
+  <property column="magic_switch" generated="never" lazy="false"
+   name="magicSwitch" not-null="true" type="boolean"/>
+  <property column="magic_discount" generated="never" lazy="false"
+   length="10" name="magicDiscount" type="integer"/>
+  <property column="magic_sofa_lines" generated="never" lazy="false"
+   length="255" name="magicSofaLines" type="string"/>
+ </class>
+</hibernate-mapping>

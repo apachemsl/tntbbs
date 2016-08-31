@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.core.entity">
+ <class name="DbFile" table="jo_upload">
+  <meta attribute="sync-DAO">false</meta>
+  <id column="filename" name="id" type="string">
+   <generator class="assigned"/>
+  </id>
+  <property column="length" generated="never" lazy="false" length="19"
+   name="length" not-null="true" type="java.lang.Integer"/>
+  <property column="last_modified" generated="never" lazy="false"
+   length="19" name="lastModified" not-null="true" type="java.lang.Long"/>
+  <property column="content" generated="never" lazy="false"
+   name="content" not-null="true" type="org.springframework.orm.hibernate3.support.BlobByteArrayType"/>
+ </class>
+</hibernate-mapping>

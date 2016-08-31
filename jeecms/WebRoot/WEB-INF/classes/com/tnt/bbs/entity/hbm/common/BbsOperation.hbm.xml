@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.bbs.entity">
+ <class name="BbsOperation" table="bbs_operation">
+  <meta attribute="sync-DAO">false</meta>
+  <cache include="all" usage="read-write"/>
+  <id column="OPERATOR_ID" name="id" type="java.lang.Integer">
+   <generator class="native"/>
+  </id>
+  <property column="OPT_NAME" generated="never" lazy="false"
+   length="100" name="optName" not-null="true" type="string"/>
+  <property column="OPT_REASON" generated="never" lazy="false"
+   length="255" name="optReason" type="string"/>
+  <property column="OPT_TIME" generated="never" lazy="false"
+   name="optTime" not-null="true" type="timestamp"/>
+  <any id-type="java.lang.Integer" lazy="false" meta-type="string" name="target">
+   <meta-value class="BbsTopic" value="TOPI"/>
+   <meta-value class="BbsPost" value="POST"/>
+   <meta-value class="BbsUser" value="MEMB"/>
+   <column name="REF_TYPE"/>
+   <column name="REF_ID"/>
+  </any>
+  <many-to-one class="com.tnt.core.entity.CmsSite" column="site_id"
+   name="site" not-null="true"/>
+  <many-to-one class="BbsUser" column="operater_id" name="operater" not-null="true"/>
+ </class>
+</hibernate-mapping>

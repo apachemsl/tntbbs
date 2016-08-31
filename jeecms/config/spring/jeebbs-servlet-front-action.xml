@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd"
+	default-lazy-init="true">
+    
+    <bean id="dynamicPageAct" class="com.tnt.bbs.action.front.DynamicPageAct"/>
+    <bean id="bbsPostAct" class="com.tnt.bbs.action.front.BbsPostAct"/>
+	<bean id="bbsTopicAct" class="com.tnt.bbs.action.front.BbsTopicAct"/>
+	<bean id="registerAct" class="com.tnt.bbs.action.front.RegisterAct"/>
+	<bean id="casLoginAct" class="com.tnt.bbs.action.front.CasLoginAct"/>
+	<bean id="userPostAct" class="com.tnt.bbs.action.member.UserPostAct"/>
+	<bean id="friendlinkAct" class="com.tnt.bbs.action.front.FriendlinkAct"/>
+	<bean id="forgotPasswordAct" class="com.tnt.bbs.action.member.ForgotPasswordAct"/>
+	<bean id="bbsMagicAct" class="com.tnt.bbs.action.front.BbsMagicAct"/>
+	<bean id="friendAct" class="com.tnt.bbs.action.member.FriendAct"></bean>
+	<bean id="messageAct" class="com.tnt.bbs.action.member.MessageAct"></bean>
+	<bean id="imageUploadAct" class="com.tnt.bbs.action.member.ImageUploadAct"></bean>
+	<bean id="imageCutAct" class="com.tnt.bbs.action.member.ImageCutAct"></bean>
+	<bean id="reportFrontAct" class="com.tnt.bbs.action.member.BbsReportFrontAct"></bean>
+	<bean id="bbsTopicSearchAct" class="com.tnt.bbs.action.front.BbsTopicSearchAct"/>
+	
+	<bean id="thirdLoginAct" class="com.tnt.bbs.action.login.ThirdLoginAct"/>
+	<bean id="bbsSessionStatisticAct" class="com.tnt.bbs.action.front.BbsSessionStatisticAct"/>
+</beans>

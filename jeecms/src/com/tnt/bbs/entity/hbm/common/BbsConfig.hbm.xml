@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.bbs.entity">
+ <class name="BbsConfig" table="bbs_config">
+  <meta attribute="sync-DAO">false</meta>
+  <cache include="all" usage="read-write"/>
+  <id column="CONFIG_ID" name="id" type="java.lang.Integer">
+   <generator class="foreign">
+    <param name="property">site</param>
+   </generator>
+  </id>
+  <property column="DEF_AVATAR" generated="never" lazy="false"
+   length="100" name="defAvatar" not-null="true" type="string"/>
+  <property column="AVATAR_WIDTH" generated="never" lazy="false"
+   length="10" name="avatarWidth" not-null="true" type="integer"/>
+  <property column="AVATAR_HEIGHT" generated="never" lazy="false"
+   length="10" name="avatarHeight" not-null="true" type="integer"/>
+  <property column="TOPIC_COUNT_PER_PAGE" generated="never" lazy="false"
+   length="10" name="topicCountPerPage" not-null="true" type="integer"/>
+  <property column="POST_COUNT_PER_PAGE" generated="never" lazy="false"
+   length="10" name="postCountPerPage" not-null="true" type="integer"/>
+  <property column="KEYWORDS" generated="never" lazy="false"
+   length="255" name="keywords" not-null="true" type="string"/>
+  <property column="DESCRIPTION" generated="never" lazy="false"
+   length="255" name="description" not-null="true" type="string"/>
+  <property column="REGISTER_STATUS" generated="never" lazy="false"
+   length="5" name="registerStatus" not-null="true" type="java.lang.Short"/>
+  <property column="REGISTER_RULE" generated="never" lazy="false"
+   name="registerRule" type="string"/>
+  <property column="TOPIC_HOT_COUNT" generated="never" lazy="false"
+   length="10" name="topicHotCount" not-null="true" type="integer"/>
+  <property column="CACHE_POST_TODAY" generated="never" lazy="false"
+   length="10" name="postToday" not-null="true" type="integer"/>
+  <property column="CACHE_POST_YESTERDAY" generated="never" lazy="false"
+   length="10" name="postYesterday" not-null="true" type="integer"/>
+  <property column="CACHE_POST_MAX" generated="never" lazy="false"
+   length="10" name="postMax" not-null="true" type="integer"/>
+  <property column="CACHE_POST_MAX_DATE" generated="never" lazy="false"
+   name="postMaxDate" not-null="true" type="date"/>
+  <property column="CACHE_TOPIC_TOTAL" generated="never" lazy="false"
+   length="10" name="topicTotal" not-null="true" type="integer"/>
+  <property column="CACHE_POST_TOTAL" generated="never" lazy="false"
+   length="10" name="postTotal" not-null="true" type="integer"/>
+  <property column="CACHE_USER_TOTAL" generated="never" lazy="false"
+   length="10" name="userTotal" not-null="true" type="integer"/>
+  <property column="AUTO_REGISTER" generated="never" lazy="false"
+   name="autoRegister" type="java.lang.Boolean"/>
+  <property column="EMAIL_VALIDATE" generated="never" lazy="false"
+   name="emailValidate" type="java.lang.Boolean"/>
+  <many-to-one class="BbsUser" column="last_user_id" name="lastUser" not-null="false"/>
+  <many-to-one class="BbsUserGroup" column="REGISTER_GROUP_ID"
+   name="registerGroup" not-null="true"/>
+  <many-to-one class="BbsUserGroup" column="default_group_id"
+   name="defaultGroup" not-null="true"/>
+  <one-to-one cascade="all" class="com.tnt.core.entity.CmsSite"
+   constrained="true" name="site"/>
+ </class>
+</hibernate-mapping>

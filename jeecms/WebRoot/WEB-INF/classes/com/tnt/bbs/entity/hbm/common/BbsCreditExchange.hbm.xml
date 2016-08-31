@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.bbs.entity">
+ <class name="BbsCreditExchange" table="bbs_credit_exchange">
+  <meta attribute="sync-DAO">false</meta>
+  <id column="eid" name="id" type="integer">
+   <generator class="assigned"/>
+  </id>
+  <property column="expoint" generated="never" lazy="false" length="10"
+   name="expoint" not-null="true" type="integer"/>
+  <property column="exprestige" generated="never" lazy="false"
+   length="10" name="exprestige" not-null="true" type="integer"/>
+  <property column="pointoutavailable" generated="never" lazy="false"
+   name="pointoutavailable" not-null="true" type="java.lang.Boolean"/>
+  <property column="pointinavailable" generated="never" lazy="false"
+   name="pointinavailable" not-null="true" type="java.lang.Boolean"/>
+  <property column="prestigeoutavailable" generated="never" lazy="false"
+   length="3" name="prestigeoutavailable" not-null="true" type="java.lang.Boolean"/>
+  <property column="prestigeinavailable" generated="never" lazy="false"
+   name="prestigeinavailable" not-null="true" type="java.lang.Boolean"/>
+  <property column="exchangetax" generated="never" lazy="false"
+   length="10" name="exchangetax" not-null="true" type="java.lang.Float"/>
+  <property column="mini_balance" generated="never" lazy="false"
+   length="10" name="miniBalance" not-null="true" type="integer"/>
+ </class>
+</hibernate-mapping>

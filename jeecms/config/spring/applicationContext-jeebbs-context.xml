@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd"
+	default-lazy-init="true">
+	
+	<bean id="category_list" class="com.tnt.bbs.action.directive.CategoryDirective"/>
+	<bean id="forum_list" class="com.tnt.bbs.action.directive.ForumDirective"/>
+	<bean id="topic_page" class="com.tnt.bbs.action.directive.TopicPageDirective"/>
+	<bean id="post_page" class="com.tnt.bbs.action.directive.PostPageDirective"/>
+	<bean id="topicpost_list" class="com.tnt.bbs.action.directive.PostListDirective"/>
+	<bean id="topic_vcount" class="com.tnt.bbs.action.directive.ViewCountDirective"/>
+	<bean id="my_topic" class="com.tnt.bbs.action.directive.MyTopicPageDirective"/>
+	<bean id="my_reply" class="com.tnt.bbs.action.directive.MyReplyPageDirective"/>
+	<bean id="config_count" class="com.tnt.bbs.action.directive.ConfigCountDirective"/>
+	<bean id="topic_day" class="com.tnt.bbs.action.directive.TopicDayPageDirective"/>
+	<bean id="newtopic_list" class="com.tnt.bbs.action.directive.NewTopicDirective"/>
+	<bean id="cms_friendlink_ctg_list" class="com.tnt.bbs.action.directive.CmsFriendlinkCtgListDirective"/>
+	<bean id="cms_friendlink_list" class="com.tnt.bbs.action.directive.CmsFriendlinkListDirective"/>
+	<bean id="bbs_posttype" class="com.tnt.bbs.action.directive.BbsPostTypeDirective"/>
+	<bean id="friend_page" class="com.tnt.bbs.action.directive.FriendPageDirective"/>
+	<bean id="friendship" class="com.tnt.bbs.action.directive.FriendDirective"/>
+	<bean id="myfriend_page" class="com.tnt.bbs.action.directive.MyFriendPageDirective"/>
+	<bean id="myfriend_list" class="com.tnt.bbs.action.directive.MyFriendListDirective"/>
+
+	<bean id="friend_apply_page" class="com.tnt.bbs.action.directive.FriendApplyPageDirective"/>
+	<bean id="mymsg_page" class="com.tnt.bbs.action.directive.MyMsgPageDirective"/>
+	<bean id="msg_reply_page" class="com.tnt.bbs.action.directive.MsgReplyPageDirective"/>
+	<bean id="post_list" class="com.tnt.bbs.action.directive.NewPostListDirective"/>
+	<bean id="top_topic_list" class="com.tnt.bbs.action.directive.TopTopicListDirective"/>
+	<!--后台权限标签-->
+	<bean id="cms_perm" class="com.tnt.bbs.web.PermistionDirective"/>
+	
+	<bean id="topicCountEhCache" class="com.tnt.bbs.cache.TopicCountEhCacheImpl"/>
+	<bean id="bbsConfigEhCache" class="com.tnt.bbs.cache.BbsConfigEhCacheImpl"/>
+	<bean id="bbsUserEhCache" class="com.tnt.bbs.cache.BbsUserCacheImpl"/>
+	
+	<bean id="cmsSiteMng" class="com.tnt.core.manager.impl.CmsSiteMngImpl"/>
+	<bean id="bbsCategoryMng" class="com.tnt.bbs.manager.impl.BbsCategoryMngImpl"/>
+	<bean id="bbsUserMng" class="com.tnt.bbs.manager.impl.BbsUserMngImpl"/>
+	<bean id="bbsUserGroupMng" class="com.tnt.bbs.manager.impl.BbsUserGroupMngImpl"/>
+	<bean id="bbsUserExtMng" class="com.tnt.bbs.manager.impl.BbsUserExtMngImpl"/>
+	<bean id="bbsPostMng" class="com.tnt.bbs.manager.impl.BbsPostMngImpl"/>
+	<bean id="bbsTopicMng" class="com.tnt.bbs.manager.impl.BbsTopicMngImpl"/>
+	<bean id="bbsConfigMng" class="com.tnt.bbs.manager.impl.BbsConfigMngImpl"/>
+	<bean id="bbsForumMng" class="com.tnt.bbs.manager.impl.BbsForumMngImpl"/>
+	<bean id="bbsOperationMng" class="com.tnt.bbs.manager.impl.BbsOperationMngImpl"/>
+	<bean id="bbsGradeMng" class="com.tnt.bbs.manager.impl.BbsGradeMngImpl"/>
+	<bean id="attachmentMng" class="com.tnt.bbs.manager.impl.AttachmentMngImpl"/>
+	<bean id="cmsResourceMng" class="com.tnt.bbs.template.manager.impl.CmsResourceMngImpl"/>
+	<bean id="cmsConfigMng" class="com.tnt.core.manager.impl.CmsConfigMngImpl"/>
+	<bean id="cmsSensitivityMng" class="com.tnt.bbs.manager.impl.CmsSensitivityMngImpl"/>
+	<bean id="cmsFriendlinkCtgMng" class="com.tnt.bbs.manager.impl.CmsFriendlinkCtgMngImpl"/>
+	<bean id="cmsFriendlinkMng" class="com.tnt.bbs.manager.impl.CmsFriendlinkMngImpl"/>
+	<bean id="bbsFriendShipMng" class="com.tnt.bbs.manager.impl.BbsFriendShipMngImpl"/>
+	<bean id="bbsMessageMng" class="com.tnt.bbs.manager.impl.BbsMessageMngImpl"/>
+	<bean id="bbsMessageReplyMng" class="com.tnt.bbs.manager.impl.BbsMessageReplyMngImpl"/>
+	<bean id="bbsPostTypeMng" class="com.tnt.bbs.manager.impl.BbsPostTypeMngImpl"/>
+	<bean id="bbsTopicMsgMng" class="com.tnt.bbs.manager.impl.BbsTopicMsgMngImpl"/>
+	
+	<bean id="bbsLoginLogMng" class="com.tnt.bbs.manager.impl.BbsLoginLogMngImpl"/>
+	<bean id="bbsUserOnlineMng" class="com.tnt.bbs.manager.impl.BbsUserOnlineMngImpl"/>
+	<bean id="bbsCreditExchangeMng" class="com.tnt.bbs.manager.impl.BbsCreditExchangeMngImpl"/>
+	<bean id="bbsCommonMagicMng" class="com.tnt.bbs.manager.impl.BbsCommonMagicMngImpl"/>
+	<bean id="bbsVoteItemMng" class="com.tnt.bbs.manager.impl.BbsVoteItemMngImpl"/>
+	<bean id="bbsVoteRecordMng" class="com.tnt.bbs.manager.impl.BbsVoteRecordMngImpl"/>
+	<bean id="bbsMagicConfigMng" class="com.tnt.bbs.manager.impl.BbsMagicConfigMngImpl"/>
+	<bean id="bbsMagicLogMng" class="com.tnt.bbs.manager.impl.BbsMagicLogMngImpl"/>
+	<bean id="bbsMemberMagicMng" class="com.tnt.bbs.manager.impl.BbsMemberMagicMngImpl"/>
+	<bean id="bbsReportMng" class="com.tnt.bbs.manager.impl.BbsReportMngImpl"/>
+	<bean id="bbsReportExtMng" class="com.tnt.bbs.manager.impl.BbsReportExtMngImpl"/>
+	<bean id="bbsSessionMng" class="com.tnt.bbs.manager.impl.BbsSessionMngImpl"/>
+	<bean id="bbsThirdAccountMng" class="com.tnt.bbs.manager.impl.BbsThirdAccountMngImpl"/>
+	<bean id="cmsConfigItemMng" class="com.tnt.core.manager.impl.CmsConfigItemMngImpl"/>
+	<bean id="bbsLimitMng" class="com.tnt.bbs.manager.impl.BbsLimitMngImpl"/>
+	<bean id="bbsUserActiveLevelMng" class="com.tnt.bbs.manager.impl.BbsUserActiveLevelMngImpl"/>
+	
+	<bean id="cmsSiteDao" class="com.tnt.core.dao.impl.CmsSiteDaoImpl"/>
+	<bean id="bbsCategoryDao" class="com.tnt.bbs.dao.impl.BbsCategoryDaoImpl"/>
+	<bean id="bbsUserDao" class="com.tnt.bbs.dao.impl.BbsUserDaoImpl"/>
+	<bean id="bbsUserGroupDao" class="com.tnt.bbs.dao.impl.BbsUserGroupDaoImpl"/>
+	<bean id="bbsUserExtDao" class="com.tnt.bbs.dao.impl.BbsUserExtDaoImpl"/>
+	<bean id="bbsPostDao" class="com.tnt.bbs.dao.impl.BbsPostDaoImpl"/>
+	<bean id="bbsTopicDao" class="com.tnt.bbs.dao.impl.BbsTopicDaoImpl"/>
+	<bean id="bbsConfigDao" class="com.tnt.bbs.dao.impl.BbsConfigDaoImpl"/>
+	<bean id="bbsForumDao" class="com.tnt.bbs.dao.impl.BbsForumDaoImpl"/>
+	<bean id="bbsOperationDao" class="com.tnt.bbs.dao.impl.BbsOperationDaoImpl"/>
+	<bean id="bbsGradeDao" class="com.tnt.bbs.dao.impl.BbsGradeDaoImpl"/>
+	<bean id="attachmentDao" class="com.tnt.bbs.dao.impl.AttachmentDaoImpl"/>
+	<bean id="cmsConfigDao" class="com.tnt.core.dao.impl.CmsConfigDaoImpl"/>
+	<bean id="cmsSensitivityDao" class="com.tnt.bbs.dao.impl.CmsSensitivityDaoImpl"/>
+	<bean id="cmsFriendlinkCtgDao" class="com.tnt.bbs.dao.impl.CmsFriendlinkCtgDaoImpl"/>
+	<bean id="cmsFriendlinkDao" class="com.tnt.bbs.dao.impl.CmsFriendlinkDaoImpl"/>
+	<bean id="bbsFriendShipDao" class="com.tnt.bbs.dao.impl.BbsFriendShipDaoImpl"/>
+	<bean id="bbsMessageDao" class="com.tnt.bbs.dao.impl.BbsMessageDaoImpl"/>
+	<bean id="bbsMessageReplyDao" class="com.tnt.bbs.dao.impl.BbsMessageReplyDaoImpl"/>
+	<bean id="bbsPostTypeDao" class="com.tnt.bbs.dao.impl.BbsPostTypeDaoImpl"/>
+	
+	<bean id="bbsLoginLogDao" class="com.tnt.bbs.dao.impl.BbsLoginLogDaoImpl"/>
+	<bean id="bbsUserOnlineDao" class="com.tnt.bbs.dao.impl.BbsUserOnlineDaoImpl"/>
+	<bean id="bbsCreditExchangeDao" class="com.tnt.bbs.dao.impl.BbsCreditExchangeDaoImpl"/>
+	<bean id="bbsCommonMagicDao" class="com.tnt.bbs.dao.impl.BbsCommonMagicDaoImpl"/>
+	<bean id="bbsVoteItemDao" class="com.tnt.bbs.dao.impl.BbsVoteItemDaoImpl"/>
+	<bean id="bbsVoteRecordDao" class="com.tnt.bbs.dao.impl.BbsVoteRecordDaoImpl"/>
+	<bean id="bbsMagicConfigDao" class="com.tnt.bbs.dao.impl.BbsMagicConfigDaoImpl"/>
+	<bean id="bbsMagicLogDao" class="com.tnt.bbs.dao.impl.BbsMagicLogDaoImpl"/>
+	<bean id="bbsMemberMagicDao" class="com.tnt.bbs.dao.impl.BbsMemberMagicDaoImpl"/>
+	<bean id="bbsReportDao" class="com.tnt.bbs.dao.impl.BbsReportDaoImpl"/>
+	<bean id="bbsReportExtDao" class="com.tnt.bbs.dao.impl.BbsReportExtDaoImpl"/>
+	<bean id="bbsSessionDao" class="com.tnt.bbs.dao.impl.BbsSessionDaoImpl"/>
+	<bean id="bbsTopicMsgDao" class="com.tnt.bbs.dao.impl.BbsTopicMsgDaoImpl"/>
+
+	<bean id="bbsThirdAccountDao" class="com.tnt.bbs.dao.impl.BbsThirdAccountDaoImpl"/>
+	<bean id="cmsConfigItemDao" class="com.tnt.core.dao.impl.CmsConfigItemDaoImpl"/>
+	<bean id="bbsLimitDao" class="com.tnt.bbs.dao.impl.BbsLimitDaoImpl"/>
+	<bean id="bbsUserActiveLevelDao" class="com.tnt.bbs.dao.impl.BbsUserActiveLevelDaoImpl"/>
+</beans>

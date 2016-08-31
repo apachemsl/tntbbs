@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.core.entity">
+ <class name="CmsSite" table="jc_site">
+  <meta attribute="sync-DAO">false</meta>
+  <cache include="all" usage="read-write"/>
+  <id column="site_id" name="id" type="java.lang.Integer">
+   <generator class="identity"/>
+  </id>
+  <property column="domain" generated="never" lazy="false" length="50"
+   name="domain" not-null="true" type="string"/>
+  <property column="site_path" generated="never" lazy="false"
+   length="20" name="path" not-null="true" type="string"/>
+  <property column="site_name" generated="never" lazy="false"
+   length="100" name="name" not-null="true" type="string"/>
+  <property column="short_name" generated="never" lazy="false"
+   length="100" name="shortName" type="string"/>
+  <property column="protocol" generated="never" lazy="false" length="20"
+   name="protocol" not-null="true" type="string"/>
+  <property column="dynamic_suffix" generated="never" lazy="false"
+   length="10" name="dynamicSuffix" not-null="true" type="string"/>
+  <property column="static_suffix" generated="never" lazy="false"
+   length="10" name="staticSuffix" not-null="true" type="string"/>
+  <property column="static_dir" generated="never" lazy="false"
+   length="50" name="staticDir" type="string"/>
+  <property column="is_index_to_root" generated="never" lazy="false"
+   name="indexToRoot" not-null="true" type="java.lang.Boolean"/>
+  <property column="is_static_index" generated="never" lazy="false"
+   name="staticIndex" not-null="true" type="java.lang.Boolean"/>
+  <property column="locale_admin" generated="never" lazy="false"
+   length="10" name="localeAdmin" not-null="true" type="string"/>
+  <property column="locale_front" generated="never" lazy="false"
+   length="10" name="localeFront" not-null="true" type="string"/>
+  <property column="tpl_solution" generated="never" lazy="false"
+   length="50" name="tplSolution" not-null="true" type="string"/>
+  <property column="tpl_mobile_solution" generated="never" lazy="false"
+   length="50" name="tplMobileSolution" not-null="true" type="string"/>
+  <property column="final_step" generated="never" lazy="false"
+   length="3" name="finalStep" not-null="true" type="java.lang.Byte"/>
+  <property column="after_check" generated="never" lazy="false"
+   length="3" name="afterCheck" not-null="true" type="java.lang.Byte"/>
+  <property column="is_relative_path" generated="never" lazy="false"
+   name="relativePath" not-null="true" type="java.lang.Boolean"/>
+  <property column="is_recycle_on" generated="never" lazy="false"
+   name="resycleOn" not-null="true" type="java.lang.Boolean"/>
+  <property column="domain_alias" generated="never" lazy="false"
+   length="255" name="domainAlias" type="string"/>
+  <property column="domain_redirect" generated="never" lazy="false"
+   length="255" name="domainRedirect" type="string"/>
+  <many-to-one class="com.tnt.core.entity.Ftp" column="ftp_upload_id"
+   name="uploadFtp" not-null="false"/>
+  <many-to-one class="CmsConfig" column="config_id" name="config" not-null="true"/>
+  <many-to-one class="com.tnt.bbs.entity.BbsCreditExchange"
+   column="creditex_id" name="creditExchange" not-null="true"/>
+  <map cascade="all-delete-orphan" name="attr" sort="unsorted" table="jc_site_attr">
+   <cache include="all" usage="read-write"/>
+   <key column="site_id" not-null="true"/>
+   <map-key column="attr_name" length="30" type="string"/>
+   <element column="attr_value" length="255" type="string"/>
+  </map>
+  <map cascade="all-delete-orphan" name="txt" sort="unsorted" table="jc_site_txt">
+   <cache include="all" usage="read-write"/>
+   <key column="site_id" not-null="true"/>
+   <map-key column="txt_name" length="30" type="string"/>
+   <element column="txt_value" type="org.springframework.orm.hibernate3.support.ClobStringType"/>
+  </map>
+  <map cascade="all-delete-orphan" name="cfg" sort="unsorted" table="jc_site_cfg">
+   <cache include="all" usage="read-write"/>
+   <key column="site_id" not-null="true"/>
+   <map-key column="cfg_name" length="30" type="string"/>
+   <element column="cfg_value" length="255" type="string"/>
+  </map>
+ </class>
+</hibernate-mapping>

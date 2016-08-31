@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.bbs.entity">
+ <class name="BbsForum" table="bbs_forum">
+  <meta attribute="sync-DAO">false</meta>
+  <cache include="all" usage="read-write"/>
+  <id column="FORUM_ID" name="id" type="java.lang.Integer">
+   <generator class="native"/>
+  </id>
+  <property column="PATH" generated="never" lazy="false" length="20"
+   name="path" not-null="true" type="string"/>
+  <property column="TITLE" generated="never" lazy="false" length="150"
+   name="title" not-null="true" type="string"/>
+  <property column="DESCRIPTION" generated="never" lazy="false"
+   length="255" name="description" type="string"/>
+  <property column="KEYWORDS" generated="never" lazy="false"
+   length="255" name="keywords" type="string"/>
+  <property column="FORUM_RULE" generated="never" lazy="false"
+   length="255" name="forumRule" type="string"/>
+  <property column="TOPIC_LOCK_LIMIT" generated="never" lazy="false"
+   length="10" name="topicLockLimit" not-null="true" type="integer"/>
+  <property column="PRIORITY" generated="never" lazy="false" length="10"
+   name="priority" not-null="true" type="integer"/>
+  <property column="TOPIC_TOTAL" generated="never" lazy="false"
+   length="10" name="topicTotal" not-null="true" type="integer"/>
+  <property column="POST_TOTAL" generated="never" lazy="false"
+   length="10" name="postTotal" not-null="true" type="integer"/>
+  <property column="POST_TODAY" generated="never" lazy="false"
+   length="10" name="postToday" not-null="true" type="integer"/>
+  <property column="OUTER_URL" generated="never" lazy="false"
+   length="255" name="outerUrl" type="string"/>
+  <property column="POINT_TOPIC" generated="never" lazy="false"
+   length="10" name="pointTopic" not-null="true" type="integer"/>
+  <property column="POINT_REPLY" generated="never" lazy="false"
+   length="10" name="pointReply" not-null="true" type="integer"/>
+  <property column="POINT_PRIME" generated="never" lazy="false"
+   length="10" name="pointPrime" not-null="true" type="integer"/>
+  <property column="PRESTIGE_TOPIC" generated="never" lazy="false"
+   length="10" name="prestigeTopic" not-null="true" type="integer"/>
+  <property column="PRESTIGE_REPLY" generated="never" lazy="false"
+   length="10" name="prestigeReply" not-null="true" type="integer"/>
+  <property column="PRESTIGE_PRIME0" generated="never" lazy="false"
+   length="10" name="prestigePrime0" not-null="true" type="integer"/>
+  <property column="PRESTIGE_PRIME1" generated="never" lazy="false"
+   length="10" name="prestigePrime1" not-null="true" type="integer"/>
+  <property column="PRESTIGE_PRIME2" generated="never" lazy="false"
+   length="10" name="prestigePrime2" not-null="true" type="integer"/>
+  <property column="PRESTIGE_PRIME3" generated="never" lazy="false"
+   length="10" name="prestigePrime3" not-null="true" type="integer"/>
+  <property column="POINT_AVAILABLE" generated="never" lazy="false"
+   name="pointAvailable" not-null="true" type="java.lang.Boolean"/>
+  <property column="PRESTIGE_AVAILABLE" generated="never" lazy="false"
+   name="prestigeAvailable" not-null="true" type="java.lang.Boolean"/>
+  <property column="LAST_TIME" generated="never" lazy="false"
+   name="lastTime" type="timestamp"/>
+  <property column="moderators" generated="never" lazy="false"
+   length="100" name="moderators" type="string"/>
+  <property column="group_views" generated="never" lazy="false"
+   length="100" name="groupViews" type="string"/>
+  <property column="group_topics" generated="never" lazy="false"
+   length="100" name="groupTopics" type="string"/>
+  <property column="group_replies" generated="never" lazy="false"
+   length="100" name="groupReplies" type="string"/>
+  <many-to-one class="BbsPost" column="POST_ID" name="lastPost" not-null="false"/>
+  <many-to-one class="BbsUser" column="replyer_id" name="lastReply" not-null="false"/>
+  <many-to-one class="BbsCategory" column="CATEGORY_ID" name="category" not-null="true"/>
+  <many-to-one class="com.tnt.core.entity.CmsSite" column="site_id"
+   name="site" not-null="true"/>
+  <set cascade="all" inverse="true" name="postTypes" sort="unsorted">
+   <key column="FORUM_ID"/>
+   <one-to-many class="BbsPostType"/>
+  </set>
+ </class>
+</hibernate-mapping>

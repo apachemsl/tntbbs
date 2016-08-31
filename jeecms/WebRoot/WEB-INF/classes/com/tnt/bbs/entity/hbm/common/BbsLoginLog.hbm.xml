@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.bbs.entity">
+ <class name="BbsLoginLog" table="bbs_login_log">
+  <meta attribute="sync-DAO">false</meta>
+  <id column="id" name="id" type="integer">
+   <generator class="native"/>
+  </id>
+  <property column="login_time" generated="never" lazy="false"
+   length="10" name="loginTime" type="timestamp"/>
+  <property column="logout_time" generated="never" lazy="false"
+   length="10" name="logoutTime" type="timestamp"/>
+  <property column="ip" generated="never" lazy="false" length="255"
+   name="ip" type="string"/>
+  <many-to-one class="BbsUser" column="user_id" name="user" not-null="false"/>
+ </class>
+</hibernate-mapping>

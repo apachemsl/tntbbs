@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.bbs.entity">
+ <class name="BbsPost" table="bbs_post">
+  <meta attribute="sync-DAO">false</meta>
+  <cache include="all" usage="read-write"/>
+  <id column="POST_ID" name="id" type="java.lang.Integer">
+   <generator class="native"/>
+  </id>
+  <property column="CREATE_TIME" generated="never" lazy="false"
+   name="createTime" not-null="true" type="timestamp"/>
+  <property column="POSTER_IP" generated="never" lazy="false"
+   length="20" name="posterIp" not-null="true" type="string"/>
+  <property column="EDIT_TIME" generated="never" lazy="false"
+   name="editTime" type="timestamp"/>
+  <property column="EDITER_IP" generated="never" lazy="false"
+   length="20" name="editerIp" type="string"/>
+  <property column="EDIT_COUNT" generated="never" lazy="false"
+   length="10" name="editCount" not-null="true" type="integer"/>
+  <property column="INDEX_COUNT" generated="never" lazy="false"
+   length="10" name="indexCount" not-null="true" type="integer"/>
+  <property column="STATUS" generated="never" lazy="false" length="5"
+   name="status" not-null="true" type="java.lang.Short"/>
+  <property column="IS_AFFIX" generated="never" lazy="false"
+   name="affix" not-null="true" type="java.lang.Boolean"/>
+  <property column="IS_HIDDEN" generated="never" lazy="false"
+   name="hidden" not-null="true" type="java.lang.Boolean"/>
+  <property column="ANONYMOUS" generated="never" lazy="false"
+   name="anonymous" type="java.lang.Boolean"/>
+  <one-to-one cascade="all" class="BbsPostText" name="postText"/>
+  <many-to-one class="com.tnt.core.entity.CmsSite" column="site_id"
+   name="site" not-null="true"/>
+  <many-to-one class="BbsConfig" column="CONFIG_ID" name="config" not-null="true"/>
+  <many-to-one class="BbsTopic" column="TOPIC_ID" name="topic" not-null="true"/>
+  <many-to-one class="BbsUser" column="creater_id" name="creater" not-null="true"/>
+  <many-to-one class="BbsUser" column="editer_id" name="editer" not-null="false"/>
+  <many-to-one class="BbsPostType" column="TYPE_ID" name="postType" not-null="true"/>
+  <set cascade="all" inverse="true" name="grade" sort="unsorted">
+   <key column="POST_ID"/>
+   <one-to-many class="BbsGrade"/>
+  </set>
+  <set cascade="delete-orphan" inverse="true" name="attachments" sort="unsorted">
+   <key column="post_id"/>
+   <one-to-many class="Attachment"/>
+  </set>
+ </class>
+</hibernate-mapping>

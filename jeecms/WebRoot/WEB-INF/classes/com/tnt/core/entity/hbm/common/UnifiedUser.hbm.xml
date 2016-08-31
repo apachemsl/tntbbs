@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.core.entity">
+ <class name="UnifiedUser" table="jo_user">
+  <meta attribute="sync-DAO">false</meta>
+  <id column="user_id" name="id" type="java.lang.Integer">
+   <generator class="identity"/>
+  </id>
+  <property column="username" generated="never" lazy="false"
+   length="100" name="username" not-null="true" type="string"/>
+  <property column="email" generated="never" lazy="false" length="100"
+   name="email" type="string"/>
+  <property column="password" generated="never" lazy="false" length="32"
+   name="password" not-null="true" type="string"/>
+  <property column="register_time" generated="never" lazy="false"
+   length="19" name="registerTime" not-null="true" type="timestamp"/>
+  <property column="register_ip" generated="never" lazy="false"
+   length="50" name="registerIp" not-null="true" type="string"/>
+  <property column="last_login_time" generated="never" lazy="false"
+   length="19" name="lastLoginTime" type="timestamp"/>
+  <property column="last_login_ip" generated="never" lazy="false"
+   length="50" name="lastLoginIp" type="string"/>
+  <property column="login_count" generated="never" lazy="false"
+   length="10" name="loginCount" not-null="true" type="integer"/>
+  <property column="reset_key" generated="never" lazy="false"
+   length="32" name="resetKey" type="string"/>
+  <property column="reset_pwd" generated="never" lazy="false"
+   length="10" name="resetPwd" type="string"/>
+  <property column="error_time" generated="never" lazy="false"
+   length="19" name="errorTime" type="timestamp"/>
+  <property column="error_count" generated="never" lazy="false"
+   length="10" name="errorCount" not-null="true" type="integer"/>
+  <property column="error_ip" generated="never" lazy="false" length="50"
+   name="errorIp" type="string"/>
+  <property generated="never" lazy="false" name="activation"
+   not-null="true" type="java.lang.Boolean"/>
+  <property column="activation_code" generated="never" lazy="false"
+   length="32" name="activationCode" type="string"/>
+ </class>
+</hibernate-mapping>

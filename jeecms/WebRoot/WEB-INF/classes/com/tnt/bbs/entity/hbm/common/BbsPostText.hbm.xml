@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.bbs.entity">
+ <class lazy="true" name="BbsPostText" table="bbs_post_text">
+  <meta attribute="sync-DAO">false</meta>
+  <cache include="all" usage="read-write"/>
+  <id column="POST_ID" name="id" type="java.lang.Integer">
+   <generator class="foreign">
+    <param name="property">post</param>
+   </generator>
+  </id>
+  <property column="POST_TITLE" generated="never" lazy="false"
+   length="100" name="title" type="string"/>
+  <property column="POST_CONTENT" generated="never" lazy="false"
+   name="content" type="string"/>
+  <one-to-one cascade="all" class="BbsPost" constrained="true" name="post"/>
+ </class>
+</hibernate-mapping>

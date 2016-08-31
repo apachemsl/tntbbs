@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.bbs.entity">
+ <class name="BbsCategory" table="bbs_category">
+  <meta attribute="sync-DAO">false</meta>
+  <cache include="all" usage="read-write"/>
+  <id column="CATEGORY_ID" name="id" type="java.lang.Integer">
+   <generator class="native"/>
+  </id>
+  <property column="PATH" generated="never" lazy="false" length="20"
+   name="path" not-null="true" type="string"/>
+  <property column="TITLE" generated="never" lazy="false" length="100"
+   name="title" not-null="true" type="string"/>
+  <property column="PRIORITY" generated="never" lazy="false" length="10"
+   name="priority" not-null="true" type="integer"/>
+  <property column="FORUM_COLS" generated="never" lazy="false"
+   length="10" name="forumCols" not-null="true" type="integer"/>
+  <property column="moderators" generated="never" lazy="false"
+   length="100" name="moderators" type="string"/>
+  <many-to-one class="com.tnt.core.entity.CmsSite" column="site_id"
+   name="site" not-null="true"/>
+  <set inverse="true" name="forums" sort="unsorted">
+   <cache include="all" usage="read-write"/>
+   <key column="CATEGORY_ID"/>
+   <one-to-many class="BbsForum"/>
+  </set>
+ </class>
+</hibernate-mapping>

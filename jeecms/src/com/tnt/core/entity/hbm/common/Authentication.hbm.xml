@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.core.entity">
+ <class name="Authentication" table="jo_authentication">
+  <meta attribute="sync-DAO">false</meta>
+  <id column="authentication_id" name="id" type="string">
+   <generator class="assigned"/>
+  </id>
+  <property column="userid" generated="never" lazy="false" length="19"
+   name="uid" not-null="true" type="java.lang.Integer"/>
+  <property column="username" generated="never" lazy="false"
+   length="100" name="username" not-null="true" type="string"/>
+  <property column="email" generated="never" lazy="false" length="100"
+   name="email" type="string"/>
+  <property column="login_time" generated="never" lazy="false"
+   length="19" name="loginTime" not-null="true" type="timestamp"/>
+  <property column="login_ip" generated="never" lazy="false" length="50"
+   name="loginIp" not-null="true" type="string"/>
+  <property column="update_time" generated="never" lazy="false"
+   length="19" name="updateTime" not-null="true" type="timestamp"/>
+ </class>
+</hibernate-mapping>

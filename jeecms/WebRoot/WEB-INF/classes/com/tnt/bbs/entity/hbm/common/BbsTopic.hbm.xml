@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tnt.bbs.entity">
+ <class discriminator-value="0" name="BbsTopic" table="bbs_topic">
+  <meta attribute="sync-DAO">false</meta>
+  <cache include="all" usage="read-write"/>
+  <id column="TOPIC_ID" name="id" type="java.lang.Integer">
+   <generator class="native"/>
+  </id>
+  <discriminator column="CATEGORY" force="false" insert="true"
+   not-null="true" type="integer"/>
+  <property column="TITLE" generated="never" lazy="false" length="100"
+   name="title" type="string"/>
+  <property column="CREATE_TIME" generated="never" lazy="false"
+   name="createTime" not-null="true" type="timestamp"/>
+  <property column="LAST_TIME" generated="never" lazy="false"
+   name="lastTime" not-null="true" type="timestamp"/>
+  <property column="SORT_TIME" generated="never" lazy="false"
+   name="sortTime" not-null="true" type="timestamp"/>
+  <property column="VIEW_COUNT" generated="never" lazy="false"
+   length="19" name="viewCount" not-null="true" type="java.lang.Long"/>
+  <property column="views_day" generated="never" lazy="false"
+   length="11" name="viewsDay" not-null="true" type="java.lang.Long"/>
+  <property column="views_week" generated="never" lazy="false"
+   length="11" name="viewsWeek" not-null="true" type="java.lang.Long"/>
+  <property column="views_month" generated="never" lazy="false"
+   length="11" name="viewsMonth" not-null="true" type="java.lang.Long"/>
+  <property column="REPLY_COUNT" generated="never" lazy="false"
+   length="10" name="replyCount" not-null="true" type="integer"/>
+  <property column="replycount_day" generated="never" lazy="false"
+   length="10" name="replyCountDay" not-null="true" type="integer"/>
+  <property column="TOP_LEVEL" generated="never" lazy="false" length="5"
+   name="topLevel" not-null="true" type="java.lang.Short"/>
+  <property column="PRIME_LEVEL" generated="never" lazy="false"
+   length="5" name="primeLevel" not-null="true" type="java.lang.Short"/>
+  <property column="STYLE_BOLD" generated="never" lazy="false"
+   name="styleBold" not-null="true" type="java.lang.Boolean"/>
+  <property column="STYLE_ITALIC" generated="never" lazy="false"
+   name="styleItalic" not-null="true" type="java.lang.Boolean"/>
+  <property column="STYLE_COLOR" generated="never" lazy="false"
+   length="6" name="styleColor" type="string"/>
+  <property column="STYLE_TIME" generated="never" lazy="false"
+   name="styleTime" type="timestamp"/>
+  <property column="OUTER_URL" generated="never" lazy="false"
+   length="255" name="outerUrl" type="string"/>
+  <property column="STATUS" generated="never" lazy="false" length="5"
+   name="status" not-null="true" type="java.lang.Short"/>
+  <property column="IS_AFFIX" generated="never" lazy="false"
+   name="affix" not-null="true" type="java.lang.Boolean"/>
+  <property column="moderator_reply" generated="never" lazy="false"
+   name="moderatorReply" not-null="true" type="java.lang.Boolean"/>
+  <property column="HAVA_REPLY" generated="never" lazy="false"
+   name="haveReply" type="java.lang.String"/>
+  <property column="ALLAY_REPLY" generated="never" lazy="false"
+   name="allayReply" type="java.lang.Boolean"/>
+  <property column="HAS_SOFAED" generated="never" lazy="false"
+   name="hasSofeed" type="java.lang.Boolean"/>
+  <one-to-one cascade="all" class="BbsTopicText" name="topicText"/>
+  <many-to-one class="BbsPost" column="FIRST_POST_ID" name="firstPost" not-null="false"/>
+  <many-to-one class="com.tnt.core.entity.CmsSite" column="site_id"
+   name="site" not-null="true"/>
+  <many-to-one class="BbsForum" column="FORUM_ID" name="forum" not-null="true"/>
+  <many-to-one class="BbsPost" column="LAST_POST_ID" name="lastPost" not-null="false"/>
+  <many-to-one class="BbsUser" column="creater_id" name="creater" not-null="true"/>
+  <many-to-one class="BbsUser" column="replyer_id" name="lastReply" not-null="true"/>
+  <many-to-one class="BbsPostType" column="TYPE_ID" name="postType" not-null="true"/>
+  <subclass discriminator-value="1" name="BbsVoteTopic" select-before-update="false">
+   <property column="TOTAL_COUNT" generated="never" lazy="false" name="totalCount"/>
+  </subclass>
+ </class>
+</hibernate-mapping>
