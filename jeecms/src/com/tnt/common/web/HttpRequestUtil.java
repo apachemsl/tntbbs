@@ -98,8 +98,8 @@ public class HttpRequestUtil {
         Map<String, String> params = new HashMap<String, String>();
         params.put("username", "test1");
         params.put("password", "123456");
-        request(uri, params, "post", "utf-8");
-        String result = request("http://localhost:8081/jeecms/index.jhtml", null, "get", "utf-8");
+        String result = request(uri, params, "post", "utf-8");
+        //String result = request("http://localhost:8081/jeecms/index.jhtml", null, "get", "utf-8");
         System.out.println("登陆结果:" + result);
     }
 }
